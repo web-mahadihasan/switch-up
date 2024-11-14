@@ -1,18 +1,36 @@
 import { Button, Input } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
+import { sendPasswordResetEmail } from "firebase/auth";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthProviderContext } from "../provider/AuthProvider";
+import toast from "react-hot-toast";
 
 const ForgotPassword = () => {
+
+    const {userPasswordReset} = useContext(AuthProviderContext)
+    const navigate = useNavigate()
+    const handleForgotPassword = (e) => {
+        e.preventDefault()
+        const email = e.target.email.value;
+        userPasswordReset(email)
+        .then(() => {
+            toast.success("Reset password email send your email. please check your email inbox")
+            navigate("/login-page")
+        }).catch(error => {
+            toast.error("Failed to send password reset email try again")
+        })
+    }
     return (
         <div className="text-center px-10">
             <h1 className="my-10 text-3xl font-extrabold text-[#E32D2D]">FORGOT YOUR PASSWORD</h1>
             <div>
-                <form action="" className="space-y-5">
+                <form onSubmit={handleForgotPassword} className="space-y-5">
                 <div>
-                    <Input type="text" inputMode="text"
+                    <Input name="email" type="email" inputMode="text"
                     label="Enter your email"
                     className="appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none shadow-lg bg-base-200 py-4" />
                 </div>
-                <Button fullWidth className="text-sm font-semibold tracking-wider">Send email</Button>
+                <Button type="submit" fullWidth className="text-sm font-semibold tracking-wider">Send email</Button>
                 </form>
             </div>
             <div className="divider">Or</div>
