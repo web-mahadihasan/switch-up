@@ -27,8 +27,11 @@ const Signup = () => {
     const [isChecked, setIsChecked] = useState(false);
     const [imageURL, setImageURL] = useState(null);
 
-    const {createUser, loading} = useContext(AuthProviderContext);
+    const {createUser, loading, loginWithSocial} = useContext(AuthProviderContext);
     const navigate = useNavigate()
+    const googleProvider = new GoogleAuthProvider;
+    const twitterProvider = new TwitterAuthProvider;
+    const facebookProvider = new FacebookAuthProvider;
 
     // handle user name 
     const handleSignupName = (e) => {
@@ -147,6 +150,15 @@ const Signup = () => {
             console.log(error)
         })
     }
+    const handleSocialSignup = (providerName) => {
+        loginWithSocial(providerName)
+        .then((result) => {
+            toast.success("Successfully login")
+            navigate("/")
+        }).catch(error => {
+            toast.error("Failed to login")
+        })
+    }
 
 
     return (
@@ -213,9 +225,9 @@ const Signup = () => {
             <p className="font-medium text-black/70 my-5">Already have an account? <Link to={"/login-page/login"} className="underline text-blue-500 hover:text-black/70 duration-300">Login here</Link></p>
             <div className="divider">Or Connect with</div>
             <div className="space-x-6 my-6">
-                <button className="border p-3 bg-[#FDF5F5] shadow-lg border-gray-200"><FcGoogle size={22} /></button>
-                <button className="border p-3 bg-[#FDF5F5] shadow-lg border-gray-200"><FaFacebook size={22} className="text-blue-700"/></button>
-                <button className="border p-3 bg-[#FDF5F5] shadow-lg border-gray-200"><BsTwitterX size={22} /></button>
+                <button onClick={()=> handleSocialSignup(googleProvider)} className="border p-3 bg-[#FDF5F5] shadow-lg border-gray-200"><FcGoogle size={22} /></button>
+                <button onClick={()=> handleSocialSignup(facebookProvider)} className="border p-3 bg-[#FDF5F5] shadow-lg border-gray-200"><FaFacebook size={22} className="text-blue-700"/></button>
+                <button onClick={()=> handleSocialSignup(twitterProvider)} className="border p-3 bg-[#FDF5F5] shadow-lg border-gray-200"><BsTwitterX size={22} /></button>
             </div>
         </div>
     );

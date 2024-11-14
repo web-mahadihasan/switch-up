@@ -57,7 +57,8 @@ const Login = () => {
         loginWithSocial(providerName)
         .then((result) => {
             toast.success("Successfully login")
-        }).cath(error => {
+            navigate("/")
+        }).catch(error => {
             toast.error("Failed to login")
         })
     }
