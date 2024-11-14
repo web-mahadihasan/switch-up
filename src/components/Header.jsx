@@ -47,7 +47,7 @@ const Header = () => {
               {
                 currentUser? 
                 <UserInfo/> : 
-                (<div className="flex items-center gap-x-1">
+                (<div className="items-center gap-x-1 hidden md:flex">
                   <Link to={"/login-page"} className="border border-gray-200 rounded-lg mr-4">
                     <Button variant="text" size="sm" color="blue-gray">
                       Log In

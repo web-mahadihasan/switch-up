@@ -13,9 +13,9 @@ import auth from "../firebase.init";
 import Loader from "./Loader";
 
 const Signup = () => {
-    const [signupName, setSignupName] = useState("Mehedi Hasan");
-    const [signupEmail, setSignupEmail] = useState("mehediforid7@gmail.com");
-    const [singupPassword, setSignupPassword] = useState("Mehedi@2024");
+    const [signupName, setSignupName] = useState("");
+    const [signupEmail, setSignupEmail] = useState("");
+    const [singupPassword, setSignupPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [invalidSignupEmail, setInvalidSignupEmail] = useState(false);
