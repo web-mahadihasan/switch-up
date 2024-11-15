@@ -8,7 +8,7 @@ import { IoEyeOffOutline } from "react-icons/io5";
 import { MdDone } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthProviderContext } from "../provider/AuthProvider";
-import { sendEmailVerification, signOut, updateCurrentUser, updateProfile } from "firebase/auth";
+import { FacebookAuthProvider, GoogleAuthProvider, sendEmailVerification, signOut, TwitterAuthProvider, updateCurrentUser, updateProfile } from "firebase/auth";
 import auth from "../firebase.init";
 import Loader from "./Loader";
 
