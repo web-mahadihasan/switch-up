@@ -167,7 +167,7 @@ const Signup = () => {
             <div>
                 <form onSubmit={handleSignup} className="space-y-4">
                 <div className="relative">
-                    <Input onChange={handleSignupName} value={signupName} type="text" inputMode="text" required
+                    <Input onChange={handleSignupName} type="text" inputMode="text" required
                         label="Your full name"
                         className="appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none shadow-lg bg-base-200 py-4" />
                     {
@@ -175,7 +175,7 @@ const Signup = () => {
                     }
                 </div>
                 <div className="relative">
-                    <Input onChange={handleSignupEmail} value={signupEmail} type="email" inputMode="text" required
+                    <Input onChange={handleSignupEmail}  type="email" inputMode="text" required
                     label="Enter email"
                     className="font-medium appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none shadow-lg bg-base-200 py-4" />
                     {
@@ -186,7 +186,7 @@ const Signup = () => {
                     }
                 </div>
                 <div className="relative">
-                    <Input onChange={handleSignupPassword} value={singupPassword} type={showPassword? "text": "password"} inputMode="text" required
+                    <Input onChange={handleSignupPassword} type={showPassword? "text": "password"} inputMode="text" required
                     label="Enter password"
                     className="appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none shadow-lg bg-base-200 py-4" />
                     <div onClick={()=> setShowPassword(!showPassword)} className="absolute top-2 right-2">
@@ -200,7 +200,7 @@ const Signup = () => {
                     }
                 </div>
                 <div className="relative">
-                    <Input onChange={handleSignupConfirmPassword} value={singupPassword} type={showConfirmPassword? "text": "password"} inputMode="text" required
+                    <Input onChange={handleSignupConfirmPassword}  type={showConfirmPassword? "text": "password"} inputMode="text" required
                     label="Confirm password"
                     className="appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none shadow-lg bg-base-200 py-4" />
                     <div onClick={()=> setShowConfirmPassword(!showConfirmPassword)} className="absolute top-2 right-2">
